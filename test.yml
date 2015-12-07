@@ -7,3 +7,8 @@
 
   roles:
     - ansible-role-mpop
+
+  tasks:
+
+    - name: Test mpop import projector
+      command: "{{ python_interpreter }} -c 'from mpop import projector'"
