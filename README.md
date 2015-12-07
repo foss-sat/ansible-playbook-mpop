@@ -1,5 +1,5 @@
-Ansible-Role-Mpop
-=================
+Ansible-playbook-mpop
+=====================
 
 From the [official documentation](http://mpop.readthedocs.org/en/latest):
 
