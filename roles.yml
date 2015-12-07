@@ -1,0 +1,4 @@
+---
+# Install mpop role from github
+- src: https://github.com/foss-sat/ansible-role-mpop
+  path: roles/
