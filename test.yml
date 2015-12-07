@@ -1,0 +1,9 @@
+---
+- hosts: vagrant
+  remote_user: root
+  sudo: yes
+  vars_files:
+    - vars.yml
+
+  roles:
+    - ansible-role-mpop

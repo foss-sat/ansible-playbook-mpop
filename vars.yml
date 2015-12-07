@@ -1,0 +1,5 @@
+---
+project_name: mpop
+project_path: /home/vagrant
+virtualenv_path: "{{ project_path }}/{{ project_name }}/env"
+mpop_branch: sentinel1-feature
