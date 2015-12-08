@@ -1,0 +1,22 @@
+---
+- hosts: vagrant
+  remote_user: root
+  sudo: yes
+  vars_files:
+    - vars.yml
+
+  roles:
+    - ansible-role-mpop
+
+  tasks:
+    - name: create data directory
+      file: dest={{ data_path }} state=directory
+      tags:
+        - getdata
+
+    - name: retrieve data from the web
+      get_url: url=https://www.dropbox.com/s/udztssl3z1by2v6/S1A_EW_GRDM_1SDH_20151208T062955_20151208T063055_008947_00CD09_28AD.SAFE.zip?dl=1
+          dest="{{ data_path }}/S1A_EW_GRDM_1SDH_20151208T062955_20151208T063055_008947_00CD09_28AD.SAFE.zip" checksum=md5:782e40d79b62f94e34fe1dca0333b19d
+
+      tags:
+        - getdata

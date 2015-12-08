@@ -4,3 +4,4 @@ project_path: /home/vagrant
 virtualenv_path: "{{ project_path }}/{{ project_name }}/env"
 python_interpreter: "{{ virtualenv_path }}/bin/python"
 mpop_branch: sentinel1-feature
+data_path: "{{ project_path }}/data"
