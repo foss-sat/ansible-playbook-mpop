@@ -16,17 +16,17 @@
         - getdata
 
     - name: retrieve data from the web
-      get_url: url=https://www.dropbox.com/s/udztssl3z1by2v6/S1A_EW_GRDM_1SDH_20151208T062955_20151208T063055_008947_00CD09_28AD.SAFE.zip?dl=1
-          dest="{{ data_path }}/S1A_EW_GRDM_1SDH_20151208T062955_20151208T063055_008947_00CD09_28AD.SAFE.zip" checksum=md5:782e40d79b62f94e34fe1dca0333b19d
+      get_url: url=https://www.dropbox.com/s/udztssl3z1by2v6/S1A_EW_GRDM_1SDH_20151210T044114_20151210T044214_008975_00CDDB_1468.SAFE.zip?dl=1
+          dest="{{ data_path }}/S1A_EW_GRDM_1SDH_20151210T044114_20151210T044214_008975_00CDDB_1468.SAFE.zip" checksum=md5:782e40d79b62f94e34fe1dca0333b19d
 
       tags:
         - getdata
 
     - name: Unarchive Sentinel-1 data
-      unarchive: src=/home/vagrant/data/S1A_EW_GRDM_1SDH_20151208T062955_20151208T063055_008947_00CD09_28AD.SAFE.zip
+      unarchive: src=/home/vagrant/data/S1A_EW_GRDM_1SDH_20151210T044114_20151210T044214_008975_00CDDB_1468.SAFE.zip
         dest={{ data_path }} copy=false
       tags:
-        - getdata
+        - unzipdata
 
     - name: Install Sentinel-1 configuration file
       git: repo=https://github.com/mitkin/mpop-configs.git dest="{{ ppp_config_dir }}" force=yes
@@ -39,6 +39,6 @@
         - git
 
     - name: Run test script
-      shell: "{{ python_interpreter }} /home/vagrant/scripts/sentinel1_example.py"
+      shell: "{{ python_interpreter }} {{ scripts_dir }}/sentinel1_example.py"
       tags:
         - test
