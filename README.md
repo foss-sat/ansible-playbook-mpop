@@ -13,3 +13,8 @@ Install roles using ansible-galaxy:
 Test installation:
 
     ansible-playbook -i inventory test.yml
+
+MPOP playbook for Sentinel data:
+
+    ansible-playbook -i inventory sentinel1.yml --sudo
+    # use sudo if running playbook locally, not in VM with passwordless sudo
