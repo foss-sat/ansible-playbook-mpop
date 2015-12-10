@@ -1,12 +1,13 @@
 ---
 - hosts: vagrant
-  remote_user: root
-  sudo: yes
   vars_files:
     - vars.yml
 
   roles:
     - ansible-role-mpop
+
+  environment:
+    PPP_CONFIG_DIR: "{{ ppp_config_dir }}"
 
   tasks:
     - name: create data directory
@@ -20,3 +21,24 @@
 
       tags:
         - getdata
+
+    - name: Unarchive Sentinel-1 data
+      unarchive: src=/home/vagrant/data/S1A_EW_GRDM_1SDH_20151208T062955_20151208T063055_008947_00CD09_28AD.SAFE.zip
+        dest={{ data_path }} copy=false
+      tags:
+        - getdata
+
+    - name: Install Sentinel-1 configuration file
+      git: repo=https://github.com/mitkin/mpop-configs.git dest="{{ ppp_config_dir }}" force=yes
+      tags:
+        - git
+
+    - name: Install Sentinel-1 test script
+      git: repo=https://gist.github.com/bd39922b52fd3646c17a.git dest={{ scripts_dir }} force=yes
+      tags:
+        - git
+
+    - name: Run test script
+      shell: "{{ python_interpreter }} /home/vagrant/scripts/sentinel1_example.py"
+      tags:
+        - test

@@ -3,5 +3,8 @@ project_name: mpop
 project_path: /home/vagrant
 virtualenv_path: "{{ project_path }}/{{ project_name }}/env"
 python_interpreter: "{{ virtualenv_path }}/bin/python"
-mpop_branch: sentinel1-feature
+mpop_branch: pre-master
+mipp_branch: pre-master
 data_path: "{{ project_path }}/data"
+ppp_config_dir: "{{ project_path }}/mpop-configs"
+scripts_dir: "{{ project_path }}/scripts"
