@@ -1,0 +1,12 @@
+language: python
+python: "2.7"
+
+before_install:
+  - sudo apt-get update -qq
+  - sudo apt-get install -qq python-apt
+
+install:
+  - pip install ansible==1.9.1
+
+script:
+  - ansible-playbook -i inventory test.yml --syntax-check --sudo
